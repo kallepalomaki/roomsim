@@ -1,0 +1,51 @@
+ROOMSIM CHANGE RECORD
+
+  Matlab m-code extended and tested, adding:
+1) More comprehensive comment. Kalles surface_sign and surface_coefficient signs changed to correspond  with Allen & Berkley’s values to ease referencing their work. 
+2) RT60 calculation by Norris-Eyring+Air (Tests were run cf Sabine, Sabine+Air, High Absorption Sabine+Air, Low Absorption Sabine+Air, Fitzroy+Air)
+3) Colour coded and labelled plotting of room geometry with room surfaces displayed as transparent coloured faces.
+4) Multiple sources enabled.
+5) Calculation of quantities in deep loops reorganised to increase execution speed, run time reduced by 33%.
+6) Variable elevation for source.
+7) Half length impulse response offset in delay corrected.
+8) Attenuation Effect of distance on surface reflections applied to image sources before convolution with HRIR
+9) Smoothing filter added as described in Peterson Ref A5 (useful for two-sensor case).
+10) Single and Two sensor array as alternative to HRIR.
+11) Calculation of speed of sound dependent on Temperature.
+12) Calculation of Air absorption dependent on humidity.
+13) Spline interpolation of Air absorption data tables (BUT now replaced by formula for m).
+14) Convolution of surface reflection with Air replaced by product of Spectra.
+15) Implementation of effect of distance on the reflected impulse corrected to take account of image source distance (1/R) and air absorption. Checked against calculated values for first few impulses.
+16) Interactive data input for set-up via dialogue boxes and menus.
+17) Set-up from a *.MAT or an Excel spreadsheet file picked from dialogue box presentation.
+18) Simple directionality added for single and two-sensor receivers.
+19) "Invisible" image sources distinguished or suppressed during plotting.
+20) Checks for receiver, primary source(s) and sensors within room boundaries.
+21) MIT Kemar data converted to MAT file and stored as hrir_final.mat in folder “Kemar\compact” for faster accessing and commonality of approach with CIPIC.
+22) Access enabled to CIPIC real head and Kemar data set. These required different co-ordinate systems.
+23) Schematic head added for geometric display when MIT or CIPIC are selected.
+24) Two (L&R) sensors colour coded and indicated in display when two-sensor, MIT or CIPIC are selected.
+25) Display of visibility and intensity fields of image sources (via colormaps) for single, two sensor, MIT and CIPIC receivers.
+26) Room surface transparency displayed as proportional to surface reflectivity.
+27) List of surfaces sourced from Excel spreadsheet to allow easy update by user even for compiled version for non-MATLAB users.
+28) Plot of Transfer Function magnitude with superimposed HRTF also shown where appropriate.
+29) All scripts recast as functions to allow compilation (users without MATLAB can run the *.exe)
+30) Re-display of impulse, TF, 2D and 3D supported, without recomputation of image data.
+31) Replacement code written for FIR2 and Hann window  to remove reliance on DSP SIGNAL toolbox.
+32) Matlab convolution routine replaced by use of FILTER primitive (for speed up).
+33) Spectrogram display added to convolution function used in convolving audio file with impulse response.
+34) High-Pass filter option added as per Allen & Berkley
+35) Code inserted to handle inappropriate exits from dialogue boxes using CANCEL buttons to avoid crashing.
+36) Impulse responses checked individually surface by surface, also for  paired opposed surfaces and various multi surface combinations eg 4 walls no ceiling or floor. Checked against calculated values for first few impulses.
+37) Program calculates order if requested, warns of possible long simulation time, and allows change.
+38) Program calculates impulse response length, warns of possible long simulation time, and allows change.
+39) MIT angle quantisation code vectorised to increase execution speed.
+40) Convolution of impulse response file (*.mat or *.wav) and audio file (*.mat or *.wav) built in as menu choice and can be saved (*.mat, or *.wav for playing with a MSwindows compatible media player)
+41) Core code modified to ignore “invisible/inaudible” sources (speed up obtained).
+42) Added ABOUT info function.
+43) Added GNU GPL menu choice and text for probable future activation.
+44) Valid frequency range for specular calculations now printed to MATLAB command window.
+45) Screen writes replaced by write to log file.
+46) Restriction to *.wav and *.mat now forced on read and save of audio files.
+47) Audio file impulse response variable renamed ( and converter roomsim_old2new written and tested)
+48) Converter for audio files *.mat to *.wav and vice versa written and tested
